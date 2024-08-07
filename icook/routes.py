@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, request, redirect, url_for
 from icook import app, db
 from icook.models import Category, Recipe
 
@@ -7,9 +7,11 @@ from icook.models import Category, Recipe
 def home():
     return render_template("recipes.html")
 
+
 @app.route("/categories")
 def categories():
     return render_template("categories.html")
+
 
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
