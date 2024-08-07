@@ -13,6 +13,28 @@
     <title>i-cook</title>
 </head>
 <body>
+    <header>
+        <!--navbar-->
+        <!-- top navbar -->
+        <nav>
+            <div class="nav-wrapper">
+            <a href="{{ url_for('home') }}" class="brand-logo">i-cook</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="">New Recipe</a></li>
+                <li><a href="">Categories</a></li>
+            </ul>
+            </div>
+        </nav>
+
+        <!-- mobile sidenav -->
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="">New Recipe</a></li>
+            <li><a href="">Categories</a></li>
+        </ul>
+    </header>
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
