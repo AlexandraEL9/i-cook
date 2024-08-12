@@ -38,3 +38,29 @@ def delete_category(category_id):
     db.session.delete(category)
     db.session.commit()
     return redirect(url_for("categories"))
+
+@app.route('/recipes/new', methods=['GET', 'POST'])
+def desserts_new():
+    if request.method == 'POST':
+        # Get data from form
+        recipe_name = request.form.get('recipe_name')
+        description = request.form.get('description')
+        img_src = request.form.get('img_src')
+        directions = request.form.get('directions')
+        
+        # Create new Recipe object
+        new_recipe = Recipe(
+            recipe_name=recipe_name,
+            description=description,
+            img_src=img_src,
+            directions=directions
+        )
+        
+        # Add to database
+        db.session.add(new_recipe)
+        db.session.commit()
+        flash('Recipe successfully added!', 'success')
+        return redirect(url_for('home'))
+
+    # If GET request, render the form
+    return render_template('add_recipe.html')

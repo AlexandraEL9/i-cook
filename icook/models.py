@@ -13,15 +13,14 @@ class Category(db.Model):
 
 
 class Recipe(db.Model):
-    # schema for the Recipe model
     id = db.Column(db.Integer, primary_key=True)
-    recipe_name = db.Column(db.String(50), unique=True, nullable=False)
-    recipe_description = db.Column(db.Text, nullable=False)
-    recipe_image = db.Column(db.String(255))  #a URL or file path of max length 255 characters
-    category_id = db.Column(db.Integer, db.ForeignKey("category.id", ondelete="CASCADE"), nullable=False)
+    recipe_name = db.Column(db.String(50), nullable=False)
+    description = db.Column(db.Text, nullable=False)
+    
+    img_src = db.Column(db.String(255), nullable=True)
+    directions = db.Column(db.Text, nullable=False)
+    # Add a foreign key if linked to another table, e.g., Category
+    category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
 
     def __repr__(self):
-        # __repr__ to represent itself in the form of a string
-        return "#{0} - Recipe: {1}".format(
-            self.id, self.recipe_name
-        )
+        return f"<Recipe {self.recipe_name}>"
